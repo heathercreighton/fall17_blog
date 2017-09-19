@@ -8,7 +8,7 @@
 
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h2><%= post.title %>, by <%= post.author %></h2>
+      <h2><%= post.title %>, by <%= post.user.email %></h2>
     </div>
     <div class="panel-body">
       <p><%= post.blog_entry.html_safe %></p>

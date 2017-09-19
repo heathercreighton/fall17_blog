@@ -2,7 +2,7 @@
 
 <div class='index-container' >
   <div class='panel panel-primary' >
-    <div class="panel-heading"><h1><%= @post.title %>, Posted by: <%= @post.author %></h1></div>
+    <div class="panel-heading"><h1><%= @post.title %>, Posted by: <%= @post.user.email %></h1></div>
 
     <div class='panel-body'>
         
@@ -23,10 +23,10 @@
     <h3 class="beanie">What the readers are saying...</h3>
   	<% @post.comments.each do|comment| %>
     <div class="well" >
-  		<p class='comment-header'>On <%= comment.created_at.strftime("%B %e, %Y at %l:%M %p") %>,  <%= comment.author %> said ...</p>
+  		<p class='comment-header'>On <%= comment.created_at.strftime("%B %e, %Y at %l:%M %p") %>,  <%= comment.user.email %> said ...</p>
   		<p><%= comment.comment_entry %></p>
 
-     </div> 
+    </div> 
      
   	<% end %>
 
