@@ -1,36 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class='index-container' >
+  <div class='panel panel-primary' >
+    <div class="panel-heading"><h1><%= @post.title %>, Posted by: <%= @post.author %></h1></div>
 
-<p>
-  <strong>Author:</strong>
-  <%= @post.author %>
-</p>
+    <div class='panel-body'>
+        
+        <p><%= @post.blog_entry.html_safe %></p>
+    </div>
 
-<p>
-  <strong>Blog entry:</strong>
-  <%= @post.blog_entry.html_safe %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %>
-
-
-<div id="comments" >
-	<%= render 'comments/form', comment: @comment %>
-
-
-	<% @post.comments.each do|comment| %>
-		<p><%= comment.author %> said ...</p>
-		<p><%= comment.comment_entry %></p>
-	<% end %>
+  <div class="panel-footer" ><%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' %></div>
+  </div>
 
 
 
+  <div id="comments" >
+
+  <h4 class="beanie">What do you think?</h4>
+  	<%= render 'comments/form', comment: @comment %>
+
+
+    <h3 class="beanie">What the readers are saying...</h3>
+  	<% @post.comments.each do|comment| %>
+    <div class="well" >
+  		<p class='comment-header'>On <%= comment.created_at.strftime("%B %e, %Y at %l:%M %p") %>,  <%= comment.author %> said ...</p>
+  		<p><%= comment.comment_entry %></p>
+
+     </div> 
+     
+  	<% end %>
+
+
+
+
+  </div>
 
 </div>
-
  
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', posts_path, class: 'btn btn-primary' %>
