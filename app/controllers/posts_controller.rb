@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page])
   end
 
   # GET /posts/1
@@ -61,6 +61,13 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def user_posts
+    @user = User.find_by(username: params[:name])
+  end  
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
